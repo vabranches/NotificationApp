@@ -13,6 +13,7 @@
 		02B7FA071F8ED0FD00AEE17C /* NotificacoesApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02B7FA051F8ED0FD00AEE17C /* NotificacoesApp.xcdatamodeld */; };
 		02B7FA091F8ED0FD00AEE17C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B7FA081F8ED0FD00AEE17C /* Assets.xcassets */; };
 		02B7FA0C1F8ED0FD00AEE17C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B7FA0A1F8ED0FD00AEE17C /* LaunchScreen.storyboard */; };
+		02B7FA141F8EF58300AEE17C /* SegundaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B7FA131F8EF58300AEE17C /* SegundaViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		02B7FA081F8ED0FD00AEE17C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02B7FA0B1F8ED0FD00AEE17C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02B7FA0D1F8ED0FD00AEE17C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02B7FA131F8EF58300AEE17C /* SegundaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegundaViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				02B7F9FE1F8ED0FD00AEE17C /* AppDelegate.swift */,
 				02B7FA001F8ED0FD00AEE17C /* ViewController.swift */,
 				02B7FA021F8ED0FD00AEE17C /* Main.storyboard */,
+				02B7FA131F8EF58300AEE17C /* SegundaViewController.swift */,
 				02B7FA081F8ED0FD00AEE17C /* Assets.xcassets */,
 				02B7FA0A1F8ED0FD00AEE17C /* LaunchScreen.storyboard */,
 				02B7FA0D1F8ED0FD00AEE17C /* Info.plist */,
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02B7FA141F8EF58300AEE17C /* SegundaViewController.swift in Sources */,
 				02B7FA011F8ED0FD00AEE17C /* ViewController.swift in Sources */,
 				02B7F9FF1F8ED0FD00AEE17C /* AppDelegate.swift in Sources */,
 				02B7FA071F8ED0FD00AEE17C /* NotificacoesApp.xcdatamodeld in Sources */,

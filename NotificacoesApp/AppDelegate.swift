@@ -8,15 +8,40 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var center = UNUserNotificationCenter.current()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        center.delegate = self
+        center.getNotificationSettings { (settings : UNNotificationSettings) in
+            if settings.authorizationStatus == .notDetermined{
+                let options : UNAuthorizationOptions = [.alert, .sound, .badge, .carPlay]
+
+                self.center.requestAuthorization(options: options, completionHandler: { (success: Bool, error: Error?) in
+                    
+                    if error == nil {
+                        print(success)
+                    }
+                })
+            } else {
+                print("Negado")
+            }
+        }
+        
+        let confirmAction = UNNotificationAction(identifier: "Confirm", title: "Confirmar 👍🏻", options: .foreground)
+        let cancelAction = UNNotificationAction(identifier: "Cancel", title: "Cancelar 👎🏻", options: [])
+    
+        let category = UNNotificationCategory(identifier: "Lembrete", actions: [confirmAction, cancelAction], intentIdentifiers: [], options: [])
+    
+        center.setNotificationCategories([category])
+        
         return true
     }
 
@@ -89,5 +114,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+}
+
+extension AppDelegate : UNUserNotificationCenterDelegate{
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        print(">> didReceive")
+        
+        switch response.actionIdentifier {
+        case "Confirm":
+            NotificationCenter.default.post(name: NSNotification.Name("Received"), object: response.notification.request.content.body, userInfo: nil)
+            
+        case "Cancel":
+            print(">> Clicou em Cancelar")
+        case UNNotificationDefaultActionIdentifier:
+            print(">> Clicou na mensagem")
+        case UNNotificationDismissActionIdentifier:
+            print(">> Clicou em nada")
+        default:
+            break
+        }
+        
+        completionHandler()
+        
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        print(">> willPresent")
+        completionHandler([.alert, .sound])
+    }
 }
 
